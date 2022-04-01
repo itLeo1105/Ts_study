@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom"
+type CustomLei = { name: string; age: number }
+export type { CustomLei }
 const Login = () => {
-  const history = useHistory<{ name: string; age: number }>()
+  const history = useHistory<CustomLei>()
   return (
     <div>
       <div>登录页</div>
