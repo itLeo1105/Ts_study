@@ -8,7 +8,7 @@ function App() {
     // 回调函数什么执行
     window.addEventListener('resize', function(){
       // 此时只要窗口发生变化就会出发
-      // console.log('窗口变化了');
+      console.log('窗口变化了');
     })
     // useEffect 可以返回内容
     return ()=>{

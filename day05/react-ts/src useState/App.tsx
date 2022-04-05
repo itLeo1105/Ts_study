@@ -20,7 +20,7 @@ let fn = () => {
 let n = fn() // n => never
 function App() {
   const [unmber] = useState(0) // 直接传入泛型的写法
-  const [count, setCount] = useState<CustomArr>([]) // useState 必须指定一个泛型类型 对象 数组 等
+  const [count, setCount] = useState<CustomArr>([]) // useState 必须指定一个泛型类型 是对象 数组 等
   return (
     <div className="App">
       {/* <div>当前计数 {{ count }}</div> */}
