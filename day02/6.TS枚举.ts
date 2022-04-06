@@ -12,4 +12,4 @@ function changeStr(a: str) {
 
 }
 changeStr(str.dowm)
-changeStr(89)
+changeStr(99)
