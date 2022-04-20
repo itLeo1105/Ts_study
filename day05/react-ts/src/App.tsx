@@ -35,13 +35,17 @@ function App() {
   const toggle = (id:number)=>{
     dispatch(toggleToDo(id))
   }
+  const changeValue =(event:React.ChangeEvent<HTMLInputElement>)=>{
+    console.log(event.target.value);
+    
+  }
   return (
     <div>
       <h1>Leo</h1>
       <ul>
         {/*react 中写ts 只要有类型就会有提示*/}
         <div>
-          <input type="text" ref={inpRef}/> <button onClick={add}>添加任务</button>
+          <input type="text" onChange={changeValue} ref={inpRef}/> <button onClick={add}>添加任务</button>
         </div>
         <hr />
         {todos.map(item =>{
