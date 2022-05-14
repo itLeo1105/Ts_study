@@ -1,7 +1,6 @@
 import React from 'react'
 import * as ReactDOM from 'react-dom/client'
 import './css/index.css'
-import Hello from './components/Hello'
 
 /**
  * 组件
@@ -9,26 +8,44 @@ import Hello from './components/Hello'
  * 2.class组件 -- 大写开头，继承React.Component,有render且有返回值
  */
 
-// function Zujian1() {
-//   return <div>这是组件一</div>
-// }
-// 函数组件
-const Zujian1 = () => <div style={{ color: 'red' }}>这是组件一</div>
+class Child extends React.Component {
+  state = {
+    msg: '儿子叫爸爸了！！！！',
+  }
 
-// class 类组件
-class Zujian2 extends React.Component {
+  clickSon = () => {
+    this.props.getMsg(this.state.msg)
+  }
   render() {
-    return <div style={{ color: 'skyblue' }}>这是组件二</div>
+    return (
+      <div>
+        父组件传递过来的值：{this.props.name}
+        <button onClick={this.clickSon}>给爸爸传值</button>
+      </div>
+    )
   }
 }
-const app = (
-  <div>
-    <Zujian1 />
-    <Zujian2 />
-    <Hello />
-  </div>
-)
 
-// ReactDOM.render(title, document.getElementById('root'))
+class App extends React.Component {
+  state = { name: 'Leo', msg: '' }
+  getMsg = (data) => {
+    console.log('儿子给我传值了', data)
+    this.setState({
+      msg: data,
+    })
+  }
+  render() {
+    return (
+      <div>
+        {/**class 组件 props 传值 */}
+        Name:{this.props.name}
+        {this.state.msg}
+        <Child name={this.state.name} getMsg={this.getMsg} />
+      </div>
+    )
+  }
+}
+
+// ReactDOM.render(<App />, document.getElementById('root'))
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(app)
+root.render(<App name="Leo" />)
