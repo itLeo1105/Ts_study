@@ -1,6 +1,5 @@
 import React from 'react'
 import * as ReactDOM from 'react-dom/client'
-import PropTypes from 'prop-types'
 import './css/index.css'
 
 /**
@@ -20,9 +19,6 @@ class Child extends React.Component {
   render() {
     return (
       <div>
-        {this.props.arr.map((item, index) => (
-          <li key={index}>{item.name}</li>
-        ))}
         父组件传递过来的值：{this.props.name}
         <button onClick={this.clickSon}>给爸爸传值</button>
       </div>
@@ -44,18 +40,10 @@ class App extends React.Component {
         {/**class 组件 props 传值 */}
         Name:{this.props.name}
         {this.state.msg}
-        <Child
-          name={this.state.name}
-          getMsg={this.getMsg}
-          arr={[{ name: 'Leo' }]}
-        />
+        <Child name={this.state.name} getMsg={this.getMsg} />
       </div>
     )
   }
-}
-
-Child.propTypes = {
-  arr: PropTypes.array,
 }
 
 // ReactDOM.render(<App />, document.getElementById('root'))
